@@ -6,14 +6,14 @@ from player_stats import PlayerStats
 
 def main():
     season = input("Season: ")
-    nationality = input("Nationality: ")
+    team = input("Team: ")
 
     url = f"https://studies.cs.helsinki.fi/nhlstats/{season}/players"
     reader = PlayerReader(url)
     stats = PlayerStats(reader)
-    players = stats.nationality(nationality)
+    players = stats.team(team)
 
-    table = Table(title=f"Season {season} players from {nationality}")
+    table = Table(title=f"Season {season} players from {team}")
 
     table.add_column("Name", style="cyan", no_wrap=True)
     table.add_column("Team", style="magenta")
