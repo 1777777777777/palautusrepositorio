@@ -1,0 +1,17 @@
+import requests
+from player import Player
+
+
+class PlayerReader:
+    def __init__(self, url):
+        self.url = url
+
+    def get_players(self):
+        response = requests.get(self.url, timeout=10).json()
+        players = []
+
+        for data in response:
+            player = Player(data)
+            players.append(player)
+
+        return players
