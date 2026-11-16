@@ -41,7 +41,7 @@ class UserService:
         if not username or not password:
             raise UserInputError("Username and password are required")
 
-        if len(username) < 3 or len(password) < 8:
+        if len(username) < 3 or len(password) < 8 or password.isalpha():
             raise UserInputError("Invalid username or password")
 
         if self._user_repository.find_by_username(username):
